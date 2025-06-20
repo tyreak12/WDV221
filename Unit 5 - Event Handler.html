@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Handlers Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        button, select {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #hoverBox {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 20px auto;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body onload="pageLoaded()">
+
+    <h1>Welcome to My Event Handler Demo</h1>
+
+    <!-- onclick: HTML handler -->
+    <button onclick="sayHello()">Click Me</button>
+
+    <!-- onmouseover / onmouseout: JavaScript handler -->
+    <div id="hoverBox">DONT TOUCH!</div>
+
+    <!-- onchange: HTML handler -->
+    <select onchange="handleSelectChange()">
+        <option value="">-- Choose an option --</option>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+    </select>
+
+    <script>
+        // ✅ onload
+        function pageLoaded() {
+            alert("The page has loaded!");
+        }
+
+        // ✅ onclick
+        function sayHello() {
+            console.log("User clicked the button");
+        }
+
+        // ✅ onmouseover
+        function handleMouseOver() {
+            alert("3...2...1");
+        }
+
+        // ✅ onmouseout
+        function handleMouseOut() {
+            document.write("BOOM!");
+        }
+
+        // ✅ onchange
+		function handleSelectChange() {
+			const select = document.querySelector("select");
+			const selectedText = select.options[select.selectedIndex].text;
+
+			alert("You selected " + selectedText);
+}
+
+
+        // Adding event handlers using JavaScript (JS-based instead of HTML)
+        const hoverBox = document.getElementById("hoverBox");
+        hoverBox.addEventListener("mouseover", handleMouseOver);
+        hoverBox.addEventListener("mouseout", handleMouseOut);
+    </script>
+
+</body>
+</html>
