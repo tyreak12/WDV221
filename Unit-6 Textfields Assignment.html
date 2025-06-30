@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV221 Intro Javascript - Operators and Textfields Assignment</title>
+
+<style>
+
+body {background-color:#d5c2c2;
+}
+
+.highlightTitle	{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style:italic;
+	font-size:14px;
+	text-decoration:underline;
+	color:#096;
+}
+
+
+</style>
+
+
+
+<script>
+	var count = 0;	
+	
+	function displayValue1() {
+      document.getElementById("output1").value = document.getElementById("value1").value;
+    }
+
+    function displayValue2() {
+      document.getElementById("output2").value = document.getElementById("value2").value;
+    }
+
+    function multiplyValues() {
+      var val1 = parseFloat(document.getElementById("value1").value);
+      var val2 = parseFloat(document.getElementById("value2").value);
+      document.getElementById("multiplyOutput").value = val1 * val2;
+    }
+
+    function addValues() {
+      var val1 = parseFloat(document.getElementById("value1").value);
+      var val2 = parseFloat(document.getElementById("value2").value);
+      document.getElementById("addOutput").value = val1 + val2;
+    }
+
+    function incrementCount() {
+      count++;
+      document.getElementById("incrementOutput").value = count;
+    }
+</script>
+
+
+</head>
+
+<body>
+<h2>WDV221 Intro Javascript</h2>
+<h3>Unit-6 Operators and Textfields - Assignment</h3>
+<hr />
+<p>Please complete the following exercises on this page. When complete post this page to your  server. Make a link in your WDV221 homework  page for this assignment. </p>
+<p>Include a comment in each script with the exercise number and a description of what the script is supposed to do.</p>
+<p>Using Blackboard submit this  Assignment.</p>
+<hr />
+<h3>Instructions</h3>
+<p>Use the form fields for the input values. For each of the following exercises create a function what will be activated by the button. Do not forget our discussion on button types. </p>
+<form name="form1" method="post" action="">
+  <p>Enter a number for value1:
+    <input type="text" id="value1" />
+  </p>
+  <p>Enter a number for value 2:
+    <input type="text" id="value2" />
+  </p>
+  <p>1.
+    <input type="button" value="Display value1" onclick="displayValue1()" />
+    Display the value you entered for value1:
+  <input type="text" id="output1" readonly/>
+  </p>
+  <p>2.
+    <input type="button" value="Display value2" onclick="displayValue2()" />
+    Dislplay the value you entered for value2:
+  <input type="text" id="output2" readonly/>
+  </p>
+  <p>3.
+    <input type="button" value="Multiply" onclick="multiplyValues()" />
+    Display the value of value1 * value2:
+  <input type="text" id="multiplyOutput" readonly/>
+  </p>
+  <p>4.
+    <input type="button" value="Add"  onclick="addValues()" />
+    Display the results of value1 + value2 in the following textfield.
+  <input type="text" id="addOutput" readonly/>
+  </p>
+  <p>5.
+    <input type="button" value="Increment count" onclick="incrementCount()" />
+    Use the increment operator to add 1 to count and display the new value of count.
+  <input type="text" id="incrementOutput" readonly/>
+  </p>
+  <p>
+    <input type="reset" name="Reset" id="button" value="Reset">
+  </p>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>
