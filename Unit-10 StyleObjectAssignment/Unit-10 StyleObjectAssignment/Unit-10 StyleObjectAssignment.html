@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV221 Style Object-CSS Interactions In Class Exercises</title>
+<style type="text/css">
+  .highlightRed { color: red; }
+  .centered { text-align: center; }
+  .leftAligned { text-align: left; }
+  .newFont { font-family: 'Courier New', Courier, monospace; }
+  .saleText { font-size: 24px; }
+  .yellowBg { background-color: yellow; }
+  .greenBg { background-color: green; }
+  .bordered { border: 2px solid black; padding: 5px; }
+</style>
+</head>
+
+<body>
+<h1>WDV221 Intro Javascript</h1>
+<h3 id="header3">Style Object - CSS Interactions - In Class Exercises</h3>
+
+<p id="p1">1. Click this paragraph to change the font color to red.</p>
+<p id="p2">2. Mouseover this paragraph to center the H3 element.</p>
+<p>3. Click the button to left align the H3 element. </p>
+<p>
+  <input type="button" value="Submit" onclick="document.getElementById('header3').className='leftAligned';" />
+</p>
+
+<p id="p4">4. Mouseover this paragraph to change the font.<br>
+5. Click on this paragraph to return the font to the default font.</p>
+
+<p>6. Click on the button to make the word <span id="sale">SALE</span> font size 24. </p>
+<p><input type="button" value="Submit" onclick="document.getElementById('sale').className='saleText';" /></p>
+
+<p>7. Click on the button to return the word to its original size.</p>
+<p><input type="button" value="Submit" onclick="document.getElementById('sale').className='';" /></p>
+
+<p id="p8">8. Click this paragraph to make its background yellow. </p>
+<p id="p9">9. Click on this paragraph to hide the Frog image shown below.</p>
+<p>10. Use the following button to make the Frog image shown below reappear.</p>
+<p><input type="button" value="Submit" onclick="document.getElementById('frog').style.display='block';" /></p>
+
+<p>11. Mouseover the Frog image to make its height and width double its original size.</p>
+<p>12. Click on the Frog image to make it return to original size.</p>
+<p>
+  <img id="frog" src="frog.jpg" width="100" height="100" style="display:block;" />
+</p>
+
+<p id="p13">13. Doubleclick on this paragraph to place a border around it.</p>
+<p id="p14">14. Click this paragraph to remove the border from the previous paragraph.</p>
+<p id="p15">15. Mouseover this paragraph to turn its background color to green. Mouseout to revert it.</p>
+
+<script>
+  // Feature 1
+  document.getElementById("p1").onclick = function () {
+    this.className = "highlightRed";
+  };
+
+  // Feature 2
+  document.getElementById("p2").onmouseover = function () {
+    document.getElementById("header3").className = "centered";
+  };
+
+  // Features 4 & 5
+  const p4 = document.getElementById("p4");
+  p4.onmouseover = function () {
+    this.classList.add("newFont");
+  };
+  p4.onclick = function () {
+    this.classList.remove("newFont");
+  };
+
+  // Feature 8
+  document.getElementById("p8").onclick = function () {
+    this.className = "yellowBg";
+  };
+
+  // Feature 9
+  document.getElementById("p9").onclick = function () {
+    document.getElementById("frog").style.display = "none";
+  };
+
+  // Features 11 & 12
+  const frog = document.getElementById("frog");
+  frog.onmouseover = function () {
+    this.style.width = "200px";
+    this.style.height = "200px";
+  };
+  frog.onclick = function () {
+    this.style.width = "100px";
+    this.style.height = "100px";
+  };
+
+  // Feature 13
+  document.getElementById("p13").ondblclick = function () {
+    this.className = "bordered";
+  };
+
+  // Feature 14
+  document.getElementById("p14").onclick = function () {
+    document.getElementById("p13").className = "";
+  };
+
+  // Feature 15
+  const p15 = document.getElementById("p15");
+  p15.onmouseover = function () {
+    this.className = "greenBg";
+  };
+  p15.onmouseout = function () {
+    this.className = "";
+  };
+</script>
+
+</body>
+</html>
