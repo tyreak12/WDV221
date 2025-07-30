@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WDV221 Intro Javascript</title>
+  <style>
+    #teamDisplay div.highlight {
+      font-weight: bold;
+      background-color: yellow;
+    }
+  </style>
+  <script>
+    let teamNames = ["Bears", "Browns", "Reds"];
+    let teamScores = [3, 7, 4];
+
+    function lookupNames(inNames) {
+      for (let j = 0; j < teamNames.length; j++) {
+        if (inNames === teamNames[j]) {
+          return j;
+        }
+      }
+      return -1;
+    }
+
+    function getScore() {
+      return parseInt(document.getElementById("inputScore").value);
+    }
+
+    function processTeamNames() {
+      const inTeamName = document.getElementById("inputName").value;
+      const inTeamScore = getScore();
+      const index = lookupNames(inTeamName);
+      const responseSpan = document.getElementById("outputResponse");
+
+      if (isNaN(inTeamScore)) {
+        responseSpan.innerHTML = "Invalid score input.";
+        return;
+      }
+
+      if (index === -1) {
+        teamNames.push(inTeamName);
+        teamScores.push(inTeamScore);
+        responseSpan.innerHTML = `${inTeamName} added with score ${inTeamScore}`;
+      } else {
+        teamScores[index] += inTeamScore;
+        responseSpan.innerHTML = `${inTeamName} now has ${teamScores[index]}`;
+      }
+
+      displayAllTeams();
+    }
+
+    function displayAllTeams() {
+      const teamDisplay = document.getElementById("teamDisplay");
+      teamDisplay.innerHTML = "";
+
+      let teamData = teamNames.map((name, index) => ({ name, score: teamScores[index] }));
+      teamData.sort((a, b) => b.score - a.score);
+
+      const maxScore = teamData[0].score;
+
+      for (const team of teamData) {
+        const div = document.createElement("div");
+        div.textContent = `${team.name}: ${team.score}`;
+        if (team.score === maxScore) {
+          div.classList.add("highlight");
+        }
+        teamDisplay.appendChild(div);
+      }
+    }
+
+    function resetForm() {
+      document.getElementById("form1").reset();
+      document.getElementById("outputResponse").innerHTML = "";
+      document.getElementById("teamDisplay").innerHTML = "";
+    }
+  </script>
+
+
+
+</head>
+
+<body>
+<h1>WDV221 Intro Javascript</h1>
+<h2>Skill Test - Lookup and Accumulate Arrays</h2>
+<form name="form1" method="post" action="">
+  <fieldset>
+    <legend>Team Scores</legend>
+    <p>
+      <label>Team Name: 
+        <input type="text" name="inputName" id="inputName">
+      </label>
+    </p>
+
+  <p>
+  	<label>Team Score: 
+    	<input type="text" name="inputScore" id="inputScore">
+    </label>
+  </p>
+  <p>
+  	Current Status: <span id="outputResponse"></span> </p>
+      <p>
+      <input type="button" name="button" id="button" value="Process Team Names" onClick="processTeamNames()">
+      <input type="reset" name="button2" id="button2" value="Reset" onClick="resetForm()">
+    </p>
+    <p>
+      <input type="button" value="Display All Teams" onclick="displayAllTeams()">
+    </p>
+  </fieldset>   
+</form>
+
+<h3>All Teams and Scores:</h3>
+<div id="teamDisplay"></div>
+
+
+<h3>Instructions:</h3>
+<p>1. Modify the Reset to clear the current status.</p>
+<p>2. When you enter a team that is not in the teamNames array add it to the teamNames array and add the score to the teamScores array. </p>
+<p>3. Add a function that will display all teams and their current score on the page. Call this from processTeamNames().</p>
+<p>4. Add a button to display all teams and their current score on the page.
+<p><strong>Extra Credit:</strong>
+    <ul>
+      <li>Highlight the team with the highest score.</li>
+      <li>Display the teams from high score to low score</li>
+    </ul>
+</p>
+</body>
+</html>
